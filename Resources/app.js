@@ -31,6 +31,9 @@ var description_ex;
 var type_ex;
 var amount_ex;
 
+var windowPayment;
+var windowHistory;
+
 monthNameShort = function(e) {
 	switch(e) {
 	case 0:
@@ -145,7 +148,7 @@ tableView = function(e){
 		data:e.data,
 		separatorColor:'gray'
 	});
-	
+	//-----------------------------------Day's button--------------------------
 	if(e.tableName === 'time')
 	{
 		tableView.addEventListener('click', function(e){
@@ -154,7 +157,7 @@ tableView = function(e){
 				backgroundColor : '#fff',
 				barColor:'#00a99d',
 				titleImage: (Titanium.Platform.osname ==='android') ? 'Icons-150dpi-10.png': 'Icons-10.png',
-				url: 'windowAddDataInvoce.js'
+				
 			});
 			
 			if (Ti.Platform.osname === 'android') {
@@ -294,28 +297,7 @@ tableView = function(e){
 				text : 'Start'
 			}));
 			
-		/*	
-				var start = Ti.UI.createPicker({
-			        top : '15dp',
-			        left : '50dp',
-			        useSpinner : false,
-			        selectionIndicator : false,
-			        type : Ti.UI.PICKER_TYPE_TIME,
-			        format24 : false,
-			        height : '130dp',
-			        //  width:'auto'
-		
-		  		  });
-		  		  
-		  		  start.addEventListener('click', function(e) {
-			        //alert("User selected date: " + e.value);
-			        startPickerValue = e.value;
-			    });
-
-			*/
 			
-			
-		
 			start = Ti.UI.createTextField({
 				top : 70,
 				right : 10,	
@@ -781,6 +763,7 @@ tableView = function(e){
 				width : 190,
 				height : 40,
 				backgroundColor:'#00a99d',
+				keyboardType : Ti.UI.KEYBOARD_NUMBER_PAD,
 				color : '#fff'
 				});
 			
@@ -826,7 +809,9 @@ tableView = function(e){
 							Ti.API.info("Error in connecting to server");
 						};
 						xhr.onload = function(){
-							Ti.API.info('The API responce is : ' + this.responseText);
+							//Ti.API.info('The API responce is : ' + this.responseText);
+							//alert("Your Expense Added Successfully");
+							windowAddExpense.close();
 						};
 						
 					
@@ -1169,9 +1154,10 @@ createButton = function(e){
 			var amount_ = amount.value;
 			var name_ = name.value;
 			var phone_ = phone.value;
+			var reminder_ = reminder.value;
 			
 		if ( start_pick < end_pick ){
-				var jsondata = [{start_time:start_pick,end_time:end_pick,service : service_ ,amount:amount_ ,client_phone:phone_ ,client_name:name_}];			
+				var jsondata = [{start_time:start_pick,end_time:end_pick,service : service_ ,amount:amount_ ,client_phone:phone_ ,client_name:name_, reminder:reminder_}];			
 								
 							
 					var xhr = Titanium.Network.createHTTPClient();
@@ -1187,12 +1173,14 @@ createButton = function(e){
 							
 						xhr.onload = function() {
 							
-						alert('Your Appoinment Added Successfully');
+						windowPayment.close();
 						};
 					}else if(start_pick == end_pick){
 						alert('End Time and Start Time cannot Be the same');
-					}else{
+					}else if(start_pick > end_pick){
 						alert('End Time Should Be Exceed the Start Time');
+					}else{
+						alert('Enter Your Task Details.');
 					}	
 						
 				});
@@ -1605,7 +1593,9 @@ btnSendInvoice.addEventListener('click', function(e){
 			Ti.API.info('Error on connecting to server, Please try again');
 		};
 		xhr.onload = function(){
-			Ti.API.info('success');
+			//Ti.API.info('success');
+			windowPayment.close();
+			//windowHistory.open();
 		};
 
 });
@@ -1718,7 +1708,7 @@ createMonthView = function(e){
 		// backgroundColor:'#00a99d',
 	});
 	
-	
+	//---------------------------Month view Button--------------------------
 	
 	var btnM = Ti.UI.createButton({
 		left : 100,
@@ -2108,7 +2098,7 @@ btnPayments.addEventListener('click', function(e) {
 	btnHistory.font = {fontWeight:'normal'};
 	btnInvoice.font = {fontWeight:'normal'};
 	btnPayments.font = {fontWeight:'bold'};
-	var windowPayment = Ti.UI.createWindow({
+	windowPayment = Ti.UI.createWindow({
 		title : 'Biz Now',
 		backgroundColor : '#fff',
 		barColor:'#00a99d',
@@ -2291,7 +2281,7 @@ btnHistory.addEventListener('click', function(e) {
 	btnHistory.font = {fontWeight:'bold'};
 	btnInvoice.font = {fontWeight:'normal'};
 	btnPayments.font = {fontWeight:'bold'};
-	var windowHistory = Ti.UI.createWindow({
+	windowHistory = Ti.UI.createWindow({
 		title : 'Biz Now',
 		backgroundColor : '#fff',
 		barColor:'#00a99d',
@@ -3476,6 +3466,7 @@ var rowE2 = Ti.UI.createTableViewRow({
 		expensesCategory.push(rowE2);
 		
 		
+/*
 var historyData = [];
 
 var rowH1 = Ti.UI.createTableViewRow({
@@ -3506,7 +3497,8 @@ var rowH2 = Ti.UI.createTableViewRow({
 		}
 		});
 		rowH2.add(labelH2);
-		historyData.push(rowH2);
+		historyData.push(rowH2);*/
+
 
 //set the navigation bar buttons
 win1.leftNavButton = btnMenu;

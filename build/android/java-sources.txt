@@ -1,8 +1,0 @@
-"D:/Taitanium Studio Workspace/BizNow/build/android/gen/android/support/v7/appcompat/R.java"
-"D:/Taitanium Studio Workspace/BizNow/build/android/gen/com/biznow/ApplicationStylesheet.java"
-"D:/Taitanium Studio Workspace/BizNow/build/android/gen/com/biznow/AssetCryptImpl.java"
-"D:/Taitanium Studio Workspace/BizNow/build/android/gen/com/biznow/BiznowActivity.java"
-"D:/Taitanium Studio Workspace/BizNow/build/android/gen/com/biznow/BiznowAppInfo.java"
-"D:/Taitanium Studio Workspace/BizNow/build/android/gen/com/biznow/BiznowApplication.java"
-"D:/Taitanium Studio Workspace/BizNow/build/android/gen/com/biznow/R.java"
-"D:/Taitanium Studio Workspace/BizNow/build/android/gen/ti/modules/titanium/ui/R.java"

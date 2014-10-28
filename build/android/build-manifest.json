@@ -1,6 +1,6 @@
 {
-	"target": "dist-playstore",
-	"deployType": "production",
+	"target": "emulator",
+	"deployType": "development",
 	"classname": "Biznow",
 	"platformPath": "C:\\ProgramData\\Titanium\\mobilesdk\\win32\\3.4.0.GA\\android",
 	"modulesHash": "d41d8cd98f00b204e9800998ecf8427e",
@@ -8,7 +8,6 @@
 	"modulesNativeHash": "d41d8cd98f00b204e9800998ecf8427e",
 	"modulesBindingsHash": "d41d8cd98f00b204e9800998ecf8427e",
 	"gitHash": "b54c467",
-	"outputDir": "C:\\Users\\SAYANTHAN\\Desktop",
 	"name": "BizNow",
 	"id": "com.biznow",
 	"analytics": true,
@@ -20,14 +19,14 @@
 	"guid": "60c69d40-0423-4d8b-822c-511ab93cd246",
 	"icon": "appicon.png",
 	"fullscreen": false,
-	"skipJSMinification": false,
+	"skipJSMinification": true,
 	"mergeCustomAndroidManifest": false,
-	"encryptJS": true,
+	"encryptJS": false,
 	"minSDK": 10,
 	"targetSDK": "20",
-	"propertiesHash": "4e30def4c7692e6d9ed8467ba6572b83",
+	"propertiesHash": "29f739a58f978a8021828a195a9e0576",
 	"activitiesHash": "d41d8cd98f00b204e9800998ecf8427e",
 	"servicesHash": "d41d8cd98f00b204e9800998ecf8427e",
 	"jssFilesHash": "d41d8cd98f00b204e9800998ecf8427e",
-	"jarLibHash": "de4a7dadc6744c9470706cd8dcf1c08b"
+	"jarLibHash": "63efe189f178684725c88e539255eb84"
 }
